@@ -9,7 +9,6 @@
 
 ***
 
-
 <p align="center">
   <h4>
     This repo only contain Default Signatures for <a href="https://github.com/jaeles-project/jaeles">Jaeles</a> project. Pull requests or any ideas are welcome.
@@ -53,7 +52,7 @@ Scan Usage example:
   jaeles scan -s <signature> -s <another-selector> -u http://example.com
   jaeles scan -G -s <signature> -s <another-selector> -x <exclude-selector> -u http://example.com
   cat list_target.txt | jaeles scan -c 100 -s <signature>
-
+  jaeles scan -s '/tmp/custom-signature/sensitive/.*' -L 2 --fi
 
 Examples:
   jaeles scan -s 'jira' -s 'ruby' -u target.com
@@ -84,6 +83,8 @@ Config Command examples:
   jaeles config add --signDir /tmp/standard-signatures/
   jaeles config cred --user sample --pass not123456
 
+For full Usage:
+  jaeles -hh
 ```
 
 ***
@@ -100,23 +101,45 @@ Jaeles look for signature as a single file so you can structure it as whatever y
 | **probe**      | Used for detect some technology used by the target|
 | **passives**      | Used for [passive detection](https://jaeles-project.github.io/signatures/passive/)|
 | **fuzz**       | Some common case for fuzz mode (I know a lot of false positive here) |
+| **routines**       | Routines example |
 
 ## Note for using Fuzz signatures
 Fuzz signatures may have many false positive because I can't defined exactly what is vulnerable for everything. So make sure you gotta know what are you doing here.
 
 ## Showcases
 
-|  ![apache-status.png](https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/apache-status.png?raw=true) [**Apache Server Status**](https://youtu.be/nkBcIvzi3H4)  |  ![tableau-dom-xss.png](https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/tableau-dom-xss.png?raw=true) [**Tableau DOM XSS CVE-2019-19719**](https://youtu.be/EG7Qmt8kt58) |
+|  [![asciicast](https://asciinema.org/a/392827.svg)](https://asciinema.org/a/392827) [**Jenkins Gitlab XSS CVE-2020-2096**](https://asciinema.org/a/392827)  |  [![asciicast](https://asciinema.org/a/392822.svg)](https://asciinema.org/a/392822) [**Grafana DoS Probing CVE-2020-13379**](https://asciinema.org/a/392822) |
 |:----------:|:-------------:|
-| ![rabbitmq-cred.png](https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/rabbitmq-cred.png?raw=true) [**RabbitMQ Default Credentials**](https://youtu.be/ed4n1sCNu3s) | ![jenkins-xss.png](https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/jenkins-xss.png?raw=true) [**Jenkins XSS CVE-2020-2096**](https://youtu.be/JfihhEOEWSE) |
+| [![asciicast](https://asciinema.org/a/392824.svg)](https://asciinema.org/a/392824) [**SolarWindsOrion LFI CVE-2020-10148**](https://asciinema.org/a/392824) | [![asciicast](https://asciinema.org/a/392821.svg)](https://asciinema.org/a/392821) [**Nginx Vhost XSS**](https://asciinema.org/a/392821) |
 
 <h4 align='center'> More showcase can be found <a href="https://jaeles-project.github.io/showcases/">here</a></h4>
 
 ***
 
+## What should I do if Jaeles found a vulnerability?
+
+1. Read the signature file.
+2. Seriously, read the signature file.
+3. Remember that you were warned twice about reading the signature file.
+4. Read the references and detection part to understand why Jaeles said it's vulnerable.
+5. Manually verify the vulnerability.
+
+
 ### Financial Contributors
 
 Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/jaeles-project/contribute)]
+
+
+## Special Thanks
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/cvebase/cvebase.com/main/assets/cvebase-logo.png" alt="cvebase" title="cvebase" />
+<p align="center">
+Explore the latest vulnerabilities at <a href="https://cvebase.com" >cvebase.com</a>
+</p>
+</p>
+
+
 
 
 ## License
